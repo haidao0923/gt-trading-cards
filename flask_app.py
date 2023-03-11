@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     #open the card, display the card
-    return "Success"
+    return flask.render_template("scanQR.html")
+
 if __name__ == '__main__':
     app.run()
