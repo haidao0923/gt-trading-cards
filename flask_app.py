@@ -15,8 +15,13 @@ def test():
 def qr_response():
     #get qr code response, tell the client to scan the next card
     if request.method == "POST":
-        #this is the second card
-        return redirect("https://narcolepticsheep.pythonanywhere.com/test")
+        #this is the second card. The id is contained in the response
+        id1 = request.get_json()['id1']
+        id2 = request.get_json()['id2']
+
+        #send both of these to be merged, and return the result to client
+
+        return "Hi"
 
     else: #user just scanned the FIRST card
         #get the identifier of the FIRST card from url
