@@ -1,5 +1,9 @@
 from flask import Flask, request, jsonify, redirect, url_for
 import flask
+
+import automator
+import os
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -26,6 +30,7 @@ def qr_response():
     else: #user just scanned the FIRST card
         #get the identifier of the FIRST card from url
         return flask.render_template("scanQR.html")
+
 
 
 if __name__ == '__main__':
