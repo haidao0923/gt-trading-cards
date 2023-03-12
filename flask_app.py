@@ -11,7 +11,7 @@ def test():
     return flask.render_template_string("HI")
 
 #url paramter here has 1'st card
-@app.route('/qrResponse', methods = ["POST", "GET"])
+@app.route('/qrResponse/<identifier1>', methods = ["POST", "GET"])
 def qr_response():
     #get qr code response, tell the client to scan the next card
     if request.method == "POST":
