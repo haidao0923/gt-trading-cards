@@ -1,6 +1,5 @@
 from flask import Flask
-import sqlite3
-
+import flask
 app = Flask(__name__)
 
 #When a user scans the QR code for the card,
