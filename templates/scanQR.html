@@ -1,7 +1,8 @@
 <html>
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 <body>
-    <h2> Please Scan card: <br>
+    <h2> Card 1 Scanned 
+        Please Scan 2nd card: <br>
     </h2>
 
     <div style="width: 500px" id="reader"></div>
@@ -9,20 +10,40 @@
 
 
 <script>
+
+//At this stage, user has accessed just scanned a card, and has just ACCESSED this page.
+
+//We can get the identifier of the first card from the url 
 var html5QrcodeScanner = new Html5QrcodeScanner(
     "reader", { fps: 10, qrbox: 250 });
         
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
-    console.log(`Scan result: ${decodedText}`, decodedResult);
+    //console.log(`Scan result: ${decodedText}`, decodedResult);
     
 
     // ...
     html5QrcodeScanner.clear();
     // ^ this will stop the scanner (video feed) and clear the scan area.
+
+    fetch("https://narcolepticsheep.pythonanywhere.com/qrResponse", {
+    method: "POST", redirect:'follow',
+    body: JSON.stringify({
+        identifier: "",
+    }),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+    })
+    //
+    //.then((json) => console.log(json));
 }
 
 html5QrcodeScanner.render(onScanSuccess);
+
+
+
+
 </script>
 
 </html>
